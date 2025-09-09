@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI·XR·3D 작은도서관 커뮤니티 인포그래픽</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            font-weight: 900;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: #fafbfd;
+            border-radius: 15px;
+            border-left: 5px solid #3b82f6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1c50a0;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 img {
+            height: 30px;
+        }
+        .group-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .group {
+            background: #eef2ff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .group:hover {
+            background-color: #e0e7ff;
+        }
+        .group h3 {
+            color: #2563eb;
+            font-size: 1.4em;
+            margin-top: 0;
+            font-weight: 700;
+        }
+        .group p {
+            font-size: 1em;
+            color: #4a5568;
+        }
+        .key-points {
+            margin-top: 20px;
+        }
+        .key-points h4 {
+            color: #1e40af;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .key-points ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .key-points li {
+            background: #f1f5f9;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.2s;
+        }
+        .key-points li:hover {
+            background-color: #e2e8f0;
+        }
+        .key-points li::before {
+            content: '🔹';
+            color: #3b82f6;
+            font-size: 1.2em;
+        }
+        .reason-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .reason-list li {
+            background: #f1f5f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #f97316;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .reason-list li:hover {
+            transform: translateX(5px);
+        }
+        .reason-list li strong {
+            display: block;
+            font-size: 1.2em;
+            color: #c2410c;
+            margin-bottom: 5px;
+        }
+        .reason-list li p {
+            margin: 0;
+        }
+        .planning {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .planning-item {
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #6ee7b7;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .planning-item:hover {
+            background-color: #d1fae5;
+        }
+        .planning-item h4 {
+            font-size: 1.2em;
+            color: #065f46;
+            margin-top: 0;
+        }
+        .planning-item p, .planning-item ul {
+            font-size: 0.9em;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            color: #10b981;
+        }
+        .planning-item li {
+            margin-bottom: 5px;
+        }
+        .data-points {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .data-point {
+            background: #fffbe6;
+            padding: 20px;
+            border-radius: 15px;
+            border-right: 4px solid #f59e0b;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .data-point:hover {
+            transform: translateX(5px);
+        }
+        .data-point h4 {
+            font-size: 1.2em;
+            color: #b45309;
+            margin-top: 0;
+        }
+        .data-point ul {
+            padding-left: 20px;
+        }
+        .data-point li {
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #aaa;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI·XR·3D 작은도서관 커뮤니티</h1>
+    <p class="subtitle">모두가 함께 성장하는 미래 학습 공동체</p>
+
+    <div class="section">
+        <h2><img src="https://www.flaticon.com/svg/static/icons/svg/1057/1057865.svg" alt="Group Icon">1. 함께하고 싶은 사람들</h2>
+        <div class="group-container">
+            <div class="group">
+                <h3>🧒 초등 고학년·중학생</h3>
+                <p>호기심이 많고 AI·XR 체험을 통해 미래 학습 역량을 키우고 싶은 세대</p>
+            </div>
+            <div class="group">
+                <h3>👩‍💼 성인 (직장인/학부모)</h3>
+                <p>자녀 교육에 관심이 많고, 실무나 창업 아이디어에 AI 기술을 접목하고 싶은 그룹</p>
+            </div>
+            <div class="group">
+                <h3>👵 고령층 (60세 이상)</h3>
+                <p>생활 속에서 AI를 활용할 수 있는 기초 경험을 원하는 디지털 소외 계층</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><img src="https://www.flaticon.com/svg/static/icons/svg/3364/3364402.svg" alt="Reason Icon">2. 이 그룹을 선정한 이유</h2>
+        <ul class="reason-list">
+            <li>
+                <strong>세대 포용성</strong>
+                <p>AI·XR·3D는 특정 연령층이 아닌 전 세대에게 필요한 역량이며, 작은도서관이 이를 연결하는 최적의 거점입니다.</p>
+            </li>
+            <li>
+                <strong>사회문제 해결성</strong>
+                <p>고령층의 디지털 격차와 청소년의 미래 교육 격차를 동시에 줄일 수 있습니다.</p>
+            </li>
+            <li>
+                <strong>공간 활성화</strong>
+                <p>다양한 세대가 함께 모일 때, 작은도서관의 공공적 가치와 활용도가 극대화됩니다.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2><img src="https://www.flaticon.com/svg/static/icons/svg/2539/2539077.svg" alt="Target Icon">3. 그룹별 특징 정의</h2>
+        <div class="group-container">
+            <div class="group">
+                <h3>청소년 (11~15세)</h3>
+                <div class="key-points">
+                    <h4>주요 특징</h4>
+                    <ul>
+                        <li>호기심·창의력</li>
+                        <li>미래 직업·기술 관심</li>
+                        <li>체험 학습 욕구</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <h3>성인 (25~49세)</h3>
+                <div class="key-points">
+                    <h4>주요 특징</h4>
+                    <ul>
+                        <li>자녀 교육/진로 관심</li>
+                        <li>직무 생산성 향상 욕구</li>
+                        <li>학습 의지는 있으나 시간 제약 多</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <h3>고령층 (60~75세)</h3>
+                <div class="key-points">
+                    <h4>주요 특징</h4>
+                    <ul>
+                        <li>안정적 소득(연금 등)</li>
+                        <li>디지털 격차 심화</li>
+                        <li>성취감 욕구, 여가 생활 활용</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><img src="https://www.flaticon.com/svg/static/icons/svg/2873/2873950.svg" alt="Plan Icon">4. 만남을 위한 계획</h2>
+        <div class="planning">
+            <div class="planning-item">
+                <h4>🗓️ 시간</h4>
+                <p>평일 저녁 (성인)</p>
+                <p>주말 오전 (청소년·고령층)</p>
+                <p>방학 시즌 (집중 프로그램)</p>
+            </div>
+            <div class="planning-item">
+                <h4>📍 장소</h4>
+                <p>광명시 작은도서관</p>
+                <p>(3개 시범관 → 10개로 확대)</p>
+            </div>
+            <div class="planning-item">
+                <h4>📢 접촉 방법</h4>
+                <ul>
+                    <li>온라인: 도서관 홈페이지, SNS, 지역 커뮤니티</li>
+                    <li>오프라인: 마을 축제, 학교 가정통신문, 복지관</li>
+                </ul>
+            </div>
+            <div class="planning-item">
+                <h4>🎯 대상</h4>
+                <p>지역 주민 전체 (세대 불문)</p>
+                <p><strong>특히 청소년·고령층 우선</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2><img src="https://www.flaticon.com/svg/static/icons/svg/3652/3652191.svg" alt="Interview Icon">5. 파악하고 싶은 내용</h2>
+        <div class="data-points">
+            <div class="data-point">
+                <h4>청소년에게 묻고 싶은 것</h4>
+                <ul>
+                    <li>AI·XR·3D 프로그램 흥미도</li>
+                    <li>학습 선호 방식 (이론 vs 체험)</li>
+                    <li>학부모의 교육 기대치</li>
+                </ul>
+            </div>
+            <div class="data-point">
+                <h4>성인에게 묻고 싶은 것</h4>
+                <ul>
+                    <li>AI 활용 실질적 수요 (업무·창업·자녀 교육)</li>
+                    <li>참여 가능 시간대</li>
+                    <li>가격 민감도</li>
+                </ul>
+            </div>
+            <div class="data-point">
+                <h4>고령층에게 묻고 싶은 것</h4>
+                <ul>
+                    <li>디지털 접근 장벽 (언어·기술 용어)</li>
+                    <li>생활 속 활용 기대치 (건강·정보 검색·취미)</li>
+                    <li>교육 지속 의사</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>2025 AI·XR·3D 커뮤니티 프로젝트 기획</p>
+</footer>
+
+</body>
+</html>
